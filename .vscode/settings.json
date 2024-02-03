@@ -1,0 +1,29 @@
+{
+	"[python]": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.insertSpaces": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit",
+            "source.fixAll": "explicit"
+        },
+	},
+    "python.defaultInterpreterPath": "/usr/local/bin/python",
+	"python.envFile": ".env.dev",
+	"autoDocstring.docstringFormat": "google",
+    "mypy-type-checker.path": [
+        "/usr/local/bin/mypy"
+    ],
+    "mypy-type-checker.args": [
+        "--config=${workspaceFolder}/pyproject.toml",
+    ],
+    "ruff.path": [
+        "/usr/local/bin/ruff"
+    ],
+    "ruff.lint.args": [
+        "--config=${workspaceFolder}/pyproject.toml",
+    ],
+}

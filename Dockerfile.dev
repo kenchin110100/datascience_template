@@ -1,0 +1,16 @@
+# bullseyeなどのバージョンだと、vscode-jupyterでcrashが発生する
+FROM python:3.11
+WORKDIR /app
+
+# 必要なライブラリのinstall
+# RUN apt-get update && apt-get install -y gcc python3-dev git
+
+# install python package
+RUN pip install poetry
+
+COPY ./pyproject.toml ./
+# .venvにinstallせずに、globalにinstallする
+# no-root: 自作パッケージをinstallしない
+RUN poetry config virtualenvs.create false && poetry install --no-root
+
+# docker-composeにcommandを記載している場合はCMDは無視されるので書かない

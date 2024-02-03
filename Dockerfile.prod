@@ -1,0 +1,16 @@
+FROM python:3.11.7-slim-bullseye
+WORKDIR /app
+
+# 必要なライブラリのinstall
+RUN apt-get update && apt-get install -y gcc python3-dev
+
+# install python package
+RUN pip install poetry
+
+COPY ./pyproject.toml ./poetry.lock ./
+COPY ./src/production/ ./production/
+# .venvにinstallせずに、globalにinstallする
+# no-root: 自作パッケージをinstallしない
+RUN poetry config virtualenvs.create false && poetry install --no-root --only main
+
+# docker-composeにcommandを記載している場合はCMDは無視されるので書かない
